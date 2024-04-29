@@ -50,7 +50,7 @@ async function run() {
 
 
 
-        // Find MyList Data With Email
+        // Find MyList Data With Email ..
         app.get('/myList/:email', async (req, res) => {
             // console.log(req.params.email)
             const result = await spotsCollection.find({email:req.params.email}).toArray();
