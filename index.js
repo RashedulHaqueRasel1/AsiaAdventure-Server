@@ -41,7 +41,7 @@ async function run() {
             res.send(result)
         })
 
-        // Read & Show Data Clint Side
+        // Read & Show Data Clint Side .
         app.get('/spots', async (req, res) => {
             const cursor = spotsCollection.find();
             const result = await cursor.toArray();
