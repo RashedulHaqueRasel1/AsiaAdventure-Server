@@ -116,7 +116,7 @@ run().catch(console.dir);
 
 app.get('/', (req, res) => {
 
-    res.send(" Asia Adventure Server is running")
+    res.send(" Asia Adventure Server is Running")
 
 })
 
