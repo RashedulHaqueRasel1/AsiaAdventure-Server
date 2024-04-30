@@ -14,7 +14,7 @@ app.use(express.json());
 
 
 const uri = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@cluster0.fcxten6.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0`;
-// console.log(uri)
+ 
 
 
 
@@ -53,7 +53,6 @@ async function run() {
 
         // Find MyList Data With Email ..
         app.get('/myList/:email', async (req, res) => {
-            // console.log(req.params.email)
             const result = await spotsCollection.find({email:req.params.email}).toArray();
             res.send(result)
         })
@@ -107,7 +106,7 @@ async function run() {
 
 
 
-        // Delete Single Data 
+        // Delete Single Data ..
         app.delete('/spots/:id', async (req, res) => {
             const id = req.params.id;
             const query = { _id: new ObjectId(id) };
