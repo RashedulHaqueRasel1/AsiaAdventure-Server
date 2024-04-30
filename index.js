@@ -8,9 +8,7 @@ require('dotenv').config()
 
 
 // middle Ware
-app.use(cors({
-    origin: ["http://localhost:5173/",]
-}));
+app.use(cors());
 app.use(express.json());
 
 
@@ -30,16 +28,17 @@ const client = new MongoClient(uri, {
 
 async function run() {
     try {
-        await client.connect();
+        // await client.connect(); ..
 
 
         const spotsCollection = client.db('AsiaAdventureDB').collection('Adventure')
 
         // Push Data MongoDB
         app.post('/spots', async (req, res) => {
-            const newCoffee = req.body;
-            console.log(newCoffee)
-            const result = await spotsCollection.insertOne(newCoffee);
+            const spots = req.body;
+            spots.cost= parseInt(spots.cost)
+            console.log(spots)
+            const result = await spotsCollection.insertOne(spots);
             res.send(result)
         })
 
@@ -60,6 +59,19 @@ async function run() {
         })
 
 
+        // Sort Data As
+        app.get('/spots/ds', async (req, res) => {
+            const result = await spotsCollection.find().sort({cost: -1}).toArray();
+            res.send(result)
+        })
+        
+        // Sort Data Ds
+        app.get('/spots/as', async (req, res) => {
+            const result = await spotsCollection.find().sort({cost: 1}).toArray();
+            res.send(result)
+        })
+
+
 
         // Update Page Show User Data
         app.get('/spots/:id', async (req, res) => {
@@ -68,6 +80,8 @@ async function run() {
             const result = await spotsCollection.findOne(query);
             res.send(result)
         })
+
+ 
 
 
         // Update User Data .
