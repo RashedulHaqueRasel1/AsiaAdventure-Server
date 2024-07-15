@@ -34,13 +34,17 @@ To get a local copy up and running, follow these simple steps.
 
 1. **Clone the repository:**
    ```sh
-   git clone https://github.com/RashedulHaqueRasel1/Southeast-Asia-Tourism-Management.git
-2. Install all dependencies:
+   git clone https://github.com/RashedulHaqueRasel1/AsiaAdventure-Server.git
+
+2. Navigate to the project directory:
+   ```sh
+   cd AsiaAdventure-Server
    
+3. Install all dependencies:
    ```sh
     npm install
    
-3. Live Preview
+4. Live Preview
 To run the project locally and see a live preview:
 ```sh
   nodemon index.js
